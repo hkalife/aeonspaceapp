@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">AeonSpace</string>
+    <string name="criar_campeonato">Criar campeonato</string>
+    <string name="ranking">Ranking</string>
+    <string name="sobre">Sobre</string>
+    <string name="henrique">Desenvolvido por Henrique Kalife</string>
+    <string name="pw3">Programação para Web III</string>
+    <string-array name="itens_lista">
+        <item>Criar campeonato</item>
+        <item>Site do projeto</item>
+        <item>Sobre</item>
+    </string-array>
+    <string name="nome_campeonato">Nome Campeonato</string>
+    <string name="descricao">Descrição</string>
+    <string name="data_inicio">Data de Início</string>
+    <string name="data_fim">Data de Fim</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="possui_data_fim">Possui data final</string>
+    <string name="possui_min_level">Possui level mínimo</string>
+    <string name="possui_premio">Possui prêmio</string>
+</resources>

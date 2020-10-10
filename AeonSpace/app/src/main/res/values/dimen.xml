@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sobreFont">24sp</dimen>
+    <dimen name="titleActivity">30sp</dimen>
+    <dimen name="textFieldWidth">342dp</dimen>
+    <dimen name="textFieldHeight">53dp</dimen>
+    <dimen name="levelFieldWidth">170dp</dimen>
+    <dimen name="levelFieldHeight">42dp</dimen>
+    <dimen name="checkboxWidth">165dp</dimen>
+    <dimen name="checkboxHeight">40dp</dimen>
+    <dimen name="marginText">8dp</dimen>
+    <dimen name="mainImageWidth">342dp</dimen>
+    <dimen name="mainImageHeight">139dp</dimen>
+    <dimen name="mainImageMargin">112dp</dimen>
+    <dimen name="listviewWidth">411dp</dimen>
+    <dimen name="listviewHeight">177dp</dimen>
+    <dimen name="ifrsImageWidth">298dp</dimen>
+    <dimen name="ifrsImageHeight">156dp</dimen>
+    <dimen name="marginInfoHenrique">60dp</dimen>
+    <dimen name="marginInfoPWIII">296dp</dimen>
+</resources>
