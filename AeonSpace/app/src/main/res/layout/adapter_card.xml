@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/textViewNomeCampeonato"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome Campeonato"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewDtInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data de Início" />
+
+        <TextView
+            android:id="@+id/textViewDtFim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data de Fim" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <Button
+        android:id="@+id/buttonDeletarCampeonato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtDeletar" />
+
+    <Button
+        android:id="@+id/buttonEditarCampeonato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="285dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/txtEditar" />
+
+</androidx.cardview.widget.CardView>

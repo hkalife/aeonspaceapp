@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_list"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.ListFragment"
+        android:label="@string/menu_list"
+        tools:layout="@layout/fragment_list" />
+
+
+    <activity
+        android:id="@+id/nav_cad"
+        android:name="br.edu.ifrs.projetoexemplomd.activities.CadCampeonatoActivity"
+        android:label="detalhes"
+        tools:layout="@layout/activity_cadcampeonato" />
+
+    <activity
+        android:id="@+id/action_settings"
+        android:name="br.edu.ifrs.projetoexemplomd.activities.CadCampeonatoActivity"
+        android:label="@string/action_settings2"
+        tools:layout="@layout/activity_cadcampeonato" />
+
+
+    <fragment
+        android:id="@+id/nav_share"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.ShareFragment"
+        android:label="@string/menu_share"
+        tools:layout="@layout/fragment_share" />
+
+    <fragment
+        android:id="@+id/nav_repo"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.RepoFragment"
+        android:label="@string/menu_repositorio"
+        tools:layout="@layout/fragment_repo" />
+
+    <fragment
+        android:id="@+id/nav_about"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.AboutFragment"
+        android:label="@string/menu_about"
+        tools:layout="@layout/fragment_about" />
+
+
+    <fragment
+        android:id="@+id/bottomnavcad"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.info.CadFragment"
+        android:label="@string/txtAdicionar"
+        tools:layout="@layout/fragment_cad" />
+
+    <fragment
+        android:id="@+id/bottomnavedit"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.ShareFragment"
+        android:label="@string/txtEditar"
+        tools:layout="@layout/fragment_share" />
+    <fragment
+        android:id="@+id/bottomnavlist"
+        android:name="br.edu.ifrs.projetoexemplomd.fragments.ListFragment"
+        android:label="@string/txtListar"
+        tools:layout="@layout/fragment_list" />
+
+</navigation>

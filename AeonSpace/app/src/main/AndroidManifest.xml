@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.aeonspace">
+    package="br.edu.ifrs.projetoexemplomd">
 
     <application
         android:allowBackup="true"
@@ -9,9 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CriarCampeonato"></activity>
-        <activity android:name=".Sobre" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.EditaCampeonatoActivity" android:parentActivityName=".activities.MainActivity"></activity>
+        <activity android:name=".activities.ActivitySobre" android:parentActivityName=".activities.MainActivity"/> <!-- <activity android:name=".ui.activities.LoginActivity"></activity> -->
+        <activity
+            android:name=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.CadCampeonatoActivity" android:parentActivityName=".activities.MainActivity"/>
+        <activity
+            android:name=".activities.LoginActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

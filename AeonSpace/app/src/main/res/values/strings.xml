@@ -1,21 +1,44 @@
 <resources>
-    <string name="app_name">AeonSpace</string>
-    <string name="criar_campeonato">Criar campeonato</string>
-    <string name="ranking">Ranking</string>
-    <string name="sobre">Sobre</string>
+    <string name="app_name">Aeon Space</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings2">Settings</string>
+
+    <string name="menu_home">Tela Principal</string>
+    <string name="menu_list">Listar Dados</string>
+    <string name="menu_cad">Cadastrar Campeonatos</string>
+    <string name="menu_share">Compartilhar</string>
+    <string name="menu_repositorio">Repositório do Projeto</string>
+    <string name="menu_about">Sobre</string>
+    <string name="menu_comunicacao">Comunicação</string>
+
+
+    <string name="btnlogin">LOGIN</string>
+    <string name="btnCad">CADASTRAR</string>
+    <string name="txtAdicionar">Adicionar</string>
+    <string name="txtDeletar">Deletar</string>
+    <string name="txtEditar">Editar</string>
+    <string name="txtListar">Listar</string>
+    <string name="nome">Nome</string>
+    <string name="dtnasc">DtNasc</string>
+    <string name="endereco">Endereço</string>
+    <string name="nomeCampeonato">Nome Campeonato</string>
+    <string name="descricaoCampeonato">Descrição Campeonato</string>
+    <string name="descricaoLevelMinimo">Level Mínimo</string>
+    <string name="dtini">Data de Início</string>
+    <string name="dtfim">Data de Fim</string>
+
+    <string name="msg_cadastrar_campeonato">Cadastrar Campeonato</string>
+    <string name="msg_editar_campeonato">Editar Campeonato</string>
+    <string name="msg_confirmar_edicao">Confirmar Edição</string>
+
     <string name="henrique">Desenvolvido por Henrique Kalife</string>
     <string name="pw3">Programação para Web III</string>
-    <string-array name="itens_lista">
-        <item>Criar campeonato</item>
-        <item>Site do projeto</item>
-        <item>Sobre</item>
-    </string-array>
-    <string name="nome_campeonato">Nome Campeonato</string>
-    <string name="descricao">Descrição</string>
-    <string name="data_inicio">Data de Início</string>
-    <string name="data_fim">Data de Fim</string>
-    <string name="cadastrar">Cadastrar</string>
-    <string name="possui_data_fim">Possui data final</string>
-    <string name="possui_min_level">Possui level mínimo</string>
-    <string name="possui_premio">Possui prêmio</string>
+    <string name="bem_vindo">Bem-vindo!</string>
+    <string name="descricao_inicial">Cadastre já os melhores campeonatos e concorra a prêmios exclusivos!</string>
+    <string name="campeonato_criado">Campeonato criado!</string>
+    <string name="campeonato_excluido">Campeonato excluído!</string>
 </resources>

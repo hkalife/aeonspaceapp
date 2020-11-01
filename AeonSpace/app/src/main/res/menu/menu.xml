@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/bottomnavcad"
+    android:title="@string/txtAdicionar"
+    android:icon="@drawable/ic_add"/>
+<item android:id="@+id/bottomnavdel"
+    android:title="@string/txtDeletar"
+    android:icon="@drawable/ic_delete"/>
+<item android:id="@+id/bottomnavedit"
+    android:title="@string/txtEditar"
+    android:icon="@drawable/ic_edit"/>
+<item android:id="@+id/bottomnavlist"
+    android:title="@string/txtListar"
+    android:icon="@drawable/ic_list"/>
+</menu>
