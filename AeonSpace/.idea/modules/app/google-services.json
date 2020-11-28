@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "228080855545",
+    "firebase_url": "https://projetoexemplomd.firebaseio.com",
+    "project_id": "projetoexemplomd",
+    "storage_bucket": "projetoexemplomd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228080855545:android:ca3aa385451ade4ad1b528",
+        "android_client_info": {
+          "package_name": "br.edu.ifrs.projetoexemplomd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228080855545-1j9j13kaaqjhn8m2dnlltj8v3fitjal7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.ifrs.projetoexemplomd",
+            "certificate_hash": "e9f802b826069200c398ae5f37437962bc8ba1e9"
+          }
+        },
+        {
+          "client_id": "228080855545-0ev86o2ma5hfs7k7s0ffpur7l2ppuh4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3nYHadrngm6fCFWpwUyhnNAjLflYhwng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "228080855545-0ev86o2ma5hfs7k7s0ffpur7l2ppuh4b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
