@@ -4,24 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Campeonato {
+    private String id;
     private String nomeCampeonato;
     private String descricaoCampeonato;
-    private boolean possuiDataFinal;
     private String dataInicio;
     private String dataFim;
-    private boolean possuiLevelMinimo;
     private String levelMinimo;
 
     public Campeonato(){}
 
-    public Campeonato(String nomeCampeonato, String descricaoCampeonato, boolean possuiDataFinal, String dataInicio, String dataFim, boolean possuiLevelMinimo, String levelMinimo) {
+    public Campeonato(String nomeCampeonato, String descricaoCampeonato, String dataInicio, String dataFim, String levelMinimo) {
+        this.id = id;
         this.nomeCampeonato = nomeCampeonato;
         this.descricaoCampeonato = descricaoCampeonato;
-        this.possuiDataFinal = possuiDataFinal;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
-        this.possuiLevelMinimo = possuiLevelMinimo;
         this.levelMinimo = levelMinimo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNomeCampeonato() {
@@ -40,14 +46,6 @@ public class Campeonato {
         this.descricaoCampeonato = descricaoCampeonato;
     }
 
-    public boolean isPossuiDataFinal() {
-        return possuiDataFinal;
-    }
-
-    public void setPossuiDataFinal(boolean possuiDataFinal) {
-        this.possuiDataFinal = possuiDataFinal;
-    }
-
     public String getDataInicio() {
         return dataInicio;
     }
@@ -64,14 +62,6 @@ public class Campeonato {
         this.dataFim = dataFim;
     }
 
-    public boolean isPossuiLevelMinimo() {
-        return possuiLevelMinimo;
-    }
-
-    public void setPossuiLevelMinimo(boolean possuiLevelMinimo) {
-        this.possuiLevelMinimo = possuiLevelMinimo;
-    }
-
     public String getLevelMinimo() {
         return levelMinimo;
     }
@@ -85,10 +75,8 @@ public class Campeonato {
         return "Campeonato{" +
                 "nomeCampeonato='" + nomeCampeonato + '\'' +
                 ", descricaoCampeonato='" + descricaoCampeonato + '\'' +
-                ", possuiDataFinal=" + possuiDataFinal +
                 ", dataInicio=" + dataInicio +
                 ", dataFim=" + dataFim +
-                ", possuiLevelMinimo=" + possuiLevelMinimo +
                 ", levelMinimo='" + levelMinimo + '\'' +
                 '}';
     }
@@ -112,21 +100,15 @@ public class Campeonato {
         Campeonato campeonato1 = new Campeonato();
         campeonato1.setNomeCampeonato("Primeiro Campeonato");
         campeonato1.setDescricaoCampeonato("Este é o primeiro campeonato");
-        campeonato1.setPossuiDataFinal(true);
         campeonato1.setDataInicio("25/04/2020");
-        campeonato1.setPossuiDataFinal(true);
         campeonato1.setDataFim("31/12/2020");
-        campeonato1.setPossuiLevelMinimo(false);
         //campeonato1.setLevelMinimo("1");
         campeonatos.add(campeonato1);
 
         Campeonato campeonato2 = new Campeonato();
         campeonato2.setNomeCampeonato("Segundo Campeonato");
         campeonato2.setDescricaoCampeonato("Este é o segundo campeonato");
-        campeonato2.setPossuiDataFinal(false);
         //campeonato2.setDataInicio(new String());
-        campeonato2.setPossuiDataFinal(false);
-        campeonato2.setPossuiLevelMinimo(true);
         campeonato2.setLevelMinimo("10");
         campeonatos.add(campeonato2);
 

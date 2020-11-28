@@ -51,8 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if(validarCampos()){
-                        Log.d("LOGIN", "tentando com usuario " + txtEmail.toString());
-                        Log.d("LOGIN", "tentando com senha " + txtSenha.toString());
+                        Log.d("LOGIN", "tentando logar com usuario " + txtEmail.toString());
                         mAuth.signInWithEmailAndPassword(txtEmail.getText().toString(), txtSenha.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
