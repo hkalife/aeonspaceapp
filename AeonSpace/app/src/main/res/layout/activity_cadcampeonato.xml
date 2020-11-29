@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/layoutNomeCampeonato"
         app:counterEnabled="true"
-        app:counterMaxLength="30"
+        app:counterMaxLength="18"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         >
@@ -109,6 +109,7 @@
         android:layout_height="wrap_content"
         android:text="@string/btnCad"
         android:onClick="cadCampeonato"
+        android:layout_margin="0dp"
         style="@style/botao"/>
 
 </LinearLayout>

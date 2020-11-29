@@ -39,16 +39,20 @@
         android:id="@+id/buttonDeletarCampeonato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="185dp"
         android:layout_marginTop="15dp"
-        android:text="@string/txtDeletar" />
+        android:background="@color/colorAccent"
+        android:text="@string/txtDeletar"
+        android:textColor="@color/colorWhite" />
 
     <Button
         android:id="@+id/buttonEditarCampeonato"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="285dp"
+        android:layout_marginLeft="280dp"
         android:layout_marginTop="15dp"
-        android:text="@string/txtEditar" />
+        android:background="@color/colorAccent"
+        android:text="@string/txtEditar"
+        android:textColor="@color/colorWhite" />
 
 </androidx.cardview.widget.CardView>

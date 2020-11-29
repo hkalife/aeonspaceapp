@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -58,13 +60,6 @@ public class EditaCampeonatoActivity extends AppCompatActivity {
         buttonConfirmarEdicao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Intent intent = new Intent(v.getContext(), EditaCampeonatoActivity.class);
-                intent.putExtra("NOMECAMPEONATO", listaCampeonato.get(i).getNomeCampeonato());
-                intent.putExtra("DESCRICAOCAMPEONATO", listaCampeonato.get(i).getDescricaoCampeonato());
-                intent.putExtra("DATAINICIO", listaCampeonato.get(i).getDataInicio());
-                intent.putExtra("DATAFIM", listaCampeonato.get(i).getDataFim());
-                intent.putExtra("LEVELMINIMO", listaCampeonato.get(i).getLevelMinimo());
-                v.getContext().startActivity(intent);*/
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("campeonatos").child(chave);
                 Campeonato c = new Campeonato(
                         nomeCampeonato.getText().toString(),
@@ -73,12 +68,39 @@ public class EditaCampeonatoActivity extends AppCompatActivity {
                         dataFim.getText().toString(),
                         levelMinimo.getText().toString()
                 );
-                reference.setValue(c);
-                Intent intent = new Intent(v.getContext(), MainActivity.class);
-                startActivity(intent);
-
+                if (validarCampos(c)) {
+                    reference.setValue(c);
+                    Intent intent = new Intent(v.getContext(), MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
+    }
+
+    private boolean validarCampos(Campeonato campeonato){
+        if(campeonato.getNomeCampeonato().isEmpty()){
+            ((EditText)findViewById(R.id.txtNomeCampeonatoEditar)).setError("Informe nome do campeonato");
+            return false;
+        }
+        if(campeonato.getDataInicio().isEmpty()){
+            ((EditText)findViewById(R.id.txtDtInicioEditar)).setError("Informe data de início");
+            return false;
+        }
+        if(campeonato.getDataFim().isEmpty()){
+            ((EditText)findViewById(R.id.txtDtFimEditar)).setError("Informe data de fim");
+            return false;
+        }
+        if(campeonato.getDescricaoCampeonato().isEmpty()){
+            ((EditText)findViewById(R.id.txtDescricaoCampeonatoEditar)).setError("Informe descrição do campeonato");
+            return false;
+        }
+        if(campeonato.getLevelMinimo().isEmpty()){
+            ((EditText)findViewById(R.id.txtLevelMinimoEditar)).setError("Informe level mínimo");
+            return false;
+        }
+
+        Log.d("validacao", "saiu no validar");
+        return true;
     }
 
 }

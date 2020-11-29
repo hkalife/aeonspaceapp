@@ -51,23 +51,25 @@ public class CadCampeonatoActivity extends AppCompatActivity {
         Campeonato camp = new Campeonato(nome, descricao, dataInicial, dataFim, levelMinimo);
         DatabaseReference campeonatos = reference.child("campeonatos");
 
-        campeonatos.push().setValue(camp).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(CadCampeonatoActivity.this, "Sucesso ao cadastrar campeonato!", Toast.LENGTH_SHORT).show();
-                Log.d("CADASTRO", "criando campeonato");
-                limparCampos();
-                Intent intent = new Intent(CadCampeonatoActivity.this, MainActivity.class);
-                //intent.putExtra("boolCriouCampeonato", true);
-                startActivity(intent);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("CADASTRO", "não conseguiu criar campeonato");
-                Toast.makeText(CadCampeonatoActivity.this, "Erro ao cadastrar campeonato!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        if (validarCampos(camp)) {
+            campeonatos.push().setValue(camp).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(CadCampeonatoActivity.this, "Sucesso ao cadastrar campeonato!", Toast.LENGTH_SHORT).show();
+                    Log.d("CADASTRO", "criando campeonato");
+                    limparCampos();
+                    Intent intent = new Intent(CadCampeonatoActivity.this, MainActivity.class);
+                    //intent.putExtra("boolCriouCampeonato", true);
+                    startActivity(intent);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d("CADASTRO", "não conseguiu criar campeonato");
+                    Toast.makeText(CadCampeonatoActivity.this, "Erro ao cadastrar campeonato!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
     }
 
@@ -77,6 +79,32 @@ public class CadCampeonatoActivity extends AppCompatActivity {
         ((EditText)findViewById(R.id.txtDtInicio)).setText("");
         ((EditText)findViewById(R.id.txtDtFim)).setText("");
         ((EditText)findViewById(R.id.txtLevelMinimo)).setText("");
+    }
+
+    private boolean validarCampos(Campeonato campeonato){
+        if(campeonato.getNomeCampeonato().isEmpty()){
+            ((EditText)findViewById(R.id.txtNomeCampeonato)).setError("Informe nome do campeonato");
+            return false;
+        }
+        if(campeonato.getDataInicio().isEmpty()){
+            ((EditText)findViewById(R.id.txtDtInicio)).setError("Informe data de início");
+            return false;
+        }
+        if(campeonato.getDataFim().isEmpty()){
+            ((EditText)findViewById(R.id.txtDtFim)).setError("Informe data de fim");
+            return false;
+        }
+        if(campeonato.getDescricaoCampeonato().isEmpty()){
+            ((EditText)findViewById(R.id.txtDescricaoCampeonato)).setError("Informe descrição do campeonato");
+            return false;
+        }
+        if(campeonato.getLevelMinimo().isEmpty()){
+            ((EditText)findViewById(R.id.txtLevelMinimo)).setError("Informe level mínimo");
+            return false;
+        }
+
+        Log.d("validacao", "saiu no validar");
+        return true;
     }
 
 }
