@@ -62,15 +62,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         myViewHolder.nomeCampeonato.setText(c.getNomeCampeonato());
         myViewHolder.dataInicio.setText(formatDataInicio);
         myViewHolder.dataFim.setText(formatDataFim);
-        /*myViewHolder.buttonDeletarCampeonato.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar snackbarExcluido = Snackbar.make(v,
-                        R.string.campeonato_excluido, Snackbar.LENGTH_LONG);
-                snackbarExcluido.show();
-                removerItem(i);
-            }
-        });*/
         myViewHolder.buttonDeletarCampeonato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,6 +73,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), EditaCampeonatoActivity.class);
+                intent.putExtra("chave", listaCampeonato.get(i).getId());
                 intent.putExtra("NOMECAMPEONATO", listaCampeonato.get(i).getNomeCampeonato());
                 intent.putExtra("DESCRICAOCAMPEONATO", listaCampeonato.get(i).getDescricaoCampeonato());
                 intent.putExtra("DATAINICIO", listaCampeonato.get(i).getDataInicio());

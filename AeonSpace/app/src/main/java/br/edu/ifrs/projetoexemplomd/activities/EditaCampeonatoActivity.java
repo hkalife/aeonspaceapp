@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,19 +25,29 @@ import br.edu.ifrs.projetoexemplomd.model.Campeonato;
 
 public class EditaCampeonatoActivity extends AppCompatActivity {
 
+    Button button;
+    String chave;
+    TextInputEditText nomeCampeonato;
+    TextInputEditText descricaoCampeonato;
+    TextInputEditText dataInicio;
+    TextInputEditText dataFim;
+    TextInputEditText levelMinimo;
+    View root;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edita_campeonato);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        TextInputEditText nomeCampeonato = findViewById(R.id.txtNomeCampeonatoEditar);
-        TextInputEditText descricaoCampeonato = findViewById(R.id.txtDescricaoCampeonatoEditar);
-        TextInputEditText dataInicio = findViewById(R.id.txtDtInicioEditar);
-        TextInputEditText dataFim = findViewById(R.id.txtDtFimEditar);
-        TextInputEditText levelMinimo = findViewById(R.id.txtLevelMinimoEditar);
-
         Intent intent = getIntent();
+        nomeCampeonato = findViewById(R.id.txtNomeCampeonatoEditar);
+        descricaoCampeonato = findViewById(R.id.txtDescricaoCampeonatoEditar);
+        dataInicio = findViewById(R.id.txtDtInicioEditar);
+        dataFim = findViewById(R.id.txtDtFimEditar);
+        levelMinimo = findViewById(R.id.txtLevelMinimoEditar);
+        chave = intent.getStringExtra("chave");
+
         nomeCampeonato.setText(intent.getStringExtra("NOMECAMPEONATO"));
         descricaoCampeonato.setText(intent.getStringExtra("DESCRICAOCAMPEONATO"));
         dataInicio.setText(intent.getStringExtra("DATAINICIO"));
@@ -53,6 +65,15 @@ public class EditaCampeonatoActivity extends AppCompatActivity {
                 intent.putExtra("DATAFIM", listaCampeonato.get(i).getDataFim());
                 intent.putExtra("LEVELMINIMO", listaCampeonato.get(i).getLevelMinimo());
                 v.getContext().startActivity(intent);*/
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("campeonatos").child(chave);
+                Campeonato c = new Campeonato(
+                        nomeCampeonato.getText().toString(),
+                        descricaoCampeonato.getText().toString(),
+                        dataInicio.getText().toString(),
+                        dataFim.getText().toString(),
+                        levelMinimo.getText().toString()
+                );
+                reference.setValue(c);
                 Intent intent = new Intent(v.getContext(), MainActivity.class);
                 startActivity(intent);
 
