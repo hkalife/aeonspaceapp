@@ -1,6 +1,8 @@
 package br.edu.ifrs.projetoexemplomd.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +15,28 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import br.edu.ifrs.projetoexemplomd.R;
 import br.edu.ifrs.projetoexemplomd.adapter.MyAdapter;
 import br.edu.ifrs.projetoexemplomd.listener.RecyclerItemClickListener;
 import br.edu.ifrs.projetoexemplomd.model.Campeonato;
 import br.edu.ifrs.projetoexemplomd.model.Pessoa;
+import br.edu.ifrs.projetoexemplomd.util.ConfiguraFirebase;
 
 public class ListFragment extends Fragment {
+
     RecyclerView recyclerView;
+    List<Campeonato> listaCampeonatos;
+    MyAdapter myAdapter;
+    Context context;
+
     public static ListFragment newInstance() {
         return new ListFragment();
     }
@@ -30,38 +46,37 @@ public class ListFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_list, container, false);
         recyclerView = root.findViewById(R.id.recyclerView);
-        //configurar o adapter - que formata que o layout de cada item do recycler
-        MyAdapter myAdapter = new MyAdapter(Campeonato.inicializaListaCampeonatos());
         recyclerView.setAdapter(myAdapter);
-        //linha de código usada para otimizar o recycler
         recyclerView.setHasFixedSize(true);
-
-        //configurar o gerenciador de layout
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        carregaProdutos();
 
-        //definindo o layout do recycler
         recyclerView.setLayoutManager(layoutManager);
-
-        /*recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                //método para quando sofre um click rápido
-                //método que recebe a linha do Recycler que sofreu o click
-                Toast.makeText(getContext(), "Item pressionado com click: "+ Campeonato.inicializaListaCampeonatos().get(position).getNomeCampeonato(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onLongItemClick(View view, int position) {
-                //método para quando sofre um click longo
-                Toast.makeText(getContext(), "Item pressionado com click longo: "+ Campeonato.inicializaListaCampeonatos().get(position).getNomeCampeonato(), Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-            }
-        }));*/
         return root;
+    }
+
+    private void carregaProdutos(){
+        final DatabaseReference reference = ConfiguraFirebase.getNo("campeonatos");
+        listaCampeonatos = new ArrayList<>();
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    Campeonato campeonato = ds.getValue(Campeonato.class);
+                    campeonato.setId(ds.getKey());
+                    listaCampeonatos.add(campeonato);
+                    Log.d("CAMPEONATO", campeonato.toString());
+                }
+                myAdapter = new MyAdapter(context, listaCampeonatos);
+                recyclerView.setAdapter(myAdapter);
+                recyclerView.setHasFixedSize(true);
+                reference.removeEventListener(this);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
 }

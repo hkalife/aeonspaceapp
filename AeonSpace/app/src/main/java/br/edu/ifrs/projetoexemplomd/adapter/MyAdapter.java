@@ -2,7 +2,9 @@ package br.edu.ifrs.projetoexemplomd.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,25 +13,30 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.ifrs.projetoexemplomd.R;
 import br.edu.ifrs.projetoexemplomd.activities.EditaCampeonatoActivity;
+import br.edu.ifrs.projetoexemplomd.activities.MainActivity;
 import br.edu.ifrs.projetoexemplomd.model.Campeonato;
 import br.edu.ifrs.projetoexemplomd.model.Pessoa;
+import br.edu.ifrs.projetoexemplomd.util.ConfiguraFirebase;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     List<Campeonato> listaCampeonato = new ArrayList<>();
+    Context context;
 
-
-    public MyAdapter(List<Campeonato> campeonatos) {
+    public MyAdapter(Context context, List<Campeonato> campeonatos) {
         this.listaCampeonato = campeonatos;
-
+        this.context = context;
     }
 
     @NonNull
@@ -55,13 +62,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         myViewHolder.nomeCampeonato.setText(c.getNomeCampeonato());
         myViewHolder.dataInicio.setText(formatDataInicio);
         myViewHolder.dataFim.setText(formatDataFim);
-        myViewHolder.buttonDeletarCampeonato.setOnClickListener(new View.OnClickListener() {
+        /*myViewHolder.buttonDeletarCampeonato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Snackbar snackbarExcluido = Snackbar.make(v,
                         R.string.campeonato_excluido, Snackbar.LENGTH_LONG);
                 snackbarExcluido.show();
                 removerItem(i);
+            }
+        });*/
+        myViewHolder.buttonDeletarCampeonato.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("CRUD", "clicou no botão para deletar");
+                removerItem(i, v);
             }
         });
         myViewHolder.buttonEditarCampeonato.setOnClickListener(new View.OnClickListener() {
@@ -78,10 +92,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         });
     }
 
-    private void removerItem(int position){
-        listaCampeonato.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, listaCampeonato.size());
+    public void removerItem(final int position, View v){
+        Log.d("CRUD", "REMOVENDO ITEM");
+
+        new AlertDialog.Builder(v.getContext())
+                .setTitle("Deletando campeonato")
+                .setMessage("Tem certeza que deseja deletar esse campeonato?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        final DatabaseReference reference = ConfiguraFirebase.getNo("campeonatos");
+                        reference.child(listaCampeonato.get(position).getId()).removeValue();
+                        listaCampeonato.remove(position);
+                        notifyItemRemoved(position);
+
+                    }}).setNegativeButton("Não", null).show();
+
     }
 
     @Override
