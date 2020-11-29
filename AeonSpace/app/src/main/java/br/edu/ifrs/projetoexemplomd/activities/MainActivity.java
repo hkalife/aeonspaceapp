@@ -39,6 +39,7 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import br.edu.ifrs.projetoexemplomd.R;
+import br.edu.ifrs.projetoexemplomd.dao.MensagemRepository;
 import br.edu.ifrs.projetoexemplomd.fragments.AboutFragment;
 
 
@@ -51,29 +52,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Initialize Firebase Auth
-       /* mAuth = FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword("henriquekalife@gmail.com", "1234567")
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("LOGIN", "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Log.d("LOGIN", "usuario atual é " + user.getEmail().toString());
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("LOGIN", "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
-                        }
-
-                        // ...
-                    }
-                });*/
 
         Bundle b = getIntent().getExtras();
         if (b != null && b.getBoolean("boolCriouCampeonato")) {
@@ -94,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_list,
                 R.id.nav_cad, R.id.nav_share,
-                R.id.nav_about, R.id.nav_repo,
+                //R.id.nav_about, R.id.nav_repo,
+                R.id.nav_repo,
                 R.id.nav_logout)
                 .setDrawerLayout(drawer)
                 .build();

@@ -49,11 +49,11 @@
         android:label="@string/menu_logout"
         tools:layout="@layout/fragment_logout" />
 
-    <fragment
+    <!--<fragment
         android:id="@+id/nav_about"
         android:name="br.edu.ifrs.projetoexemplomd.fragments.AboutFragment"
         android:label="@string/menu_about"
-        tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_about" />-->
 
 
     <fragment

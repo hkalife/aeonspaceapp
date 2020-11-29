@@ -31,10 +31,10 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="@string/menu_share" />
 
-            <item
+            <!--<item
                 android:id="@+id/nav_about"
                 android:icon="@drawable/ic_outline"
-                android:title="@string/menu_about" />
+                android:title="@string/menu_about" />-->
 
             <item
                 android:id="@+id/nav_logout"
